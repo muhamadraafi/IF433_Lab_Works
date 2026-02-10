@@ -1,6 +1,5 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week01
 
-// CHECKPOINT 4: Expression Body Function
 fun calculateStatus(score: Int) = if (score > 75) "Lulus" else "Tidak Lulus"
 
 fun main() {
@@ -8,7 +7,6 @@ fun main() {
     val score = 80
     println("Nama: $name, Nilai: $score")
 
-    // CHECKPOINT 3: When Expression
     val grade = when {
         score >= 90 -> "A"
         score >= 80 -> "B"
@@ -18,6 +16,10 @@ fun main() {
     }
     println("Grade: $grade")
 
-    // CHECKPOINT 4: Panggil fungsi
     println("Status: ${calculateStatus(score)}")
+
+    // CHECKPOINT 5: Null Safety
+    val studentId: String? = null
+    val idLength = studentId?.length ?: 0
+    println("Panjang ID: $idLength")
 }

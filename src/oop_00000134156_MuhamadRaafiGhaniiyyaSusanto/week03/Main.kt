@@ -1,17 +1,21 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week03
 
 fun main() {
+    println("=== TEST EMPLOYEE ===")
     val e = Employee("Budi")
-
-    // Test salary
     e.salary = 5000
-
-    // Test performance rating
     e.setPerformanceRating(4)
     println("Rating kinerja: ${e.getPerformanceRating()}")
 
-    // Baris di bawah ini akan ERROR jika dijalankan (coba hapus komentar)
-    // println(e.performanceRating)  // ERROR: Cannot access 'performanceRating'
+    println("\n=== TEST BANK ACCOUNT ===")
+    val account = BankAccount("123-456-789", 1000)
+    println("Saldo awal: ${account.balance}")
 
-    e.setPerformanceRating(6)  // Akan gagal
+    account.deposit(500)
+    account.withdraw(200)
+
+    // Baris di bawah ini akan ERROR (coba hapus komentar)
+    // account.balance = 5000  // ERROR: Cannot assign to 'balance'
+
+    account.withdraw(2000)  // Akan gagal (saldo tidak cukup)
 }

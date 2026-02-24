@@ -10,20 +10,27 @@ fun main() {
     println("\n=== TEST BANK ACCOUNT ===")
     val account = BankAccount("123-456-789", 1000)
     println("Saldo awal: ${account.balance}")
-
     account.deposit(500)
     account.withdraw(200)
 
-    // Test validasi
-    try {
-        account.deposit(-100)
-    } catch (e: IllegalArgumentException) {
-        println("Error: ${e.message}")
-    }
+    println("\n=== TEST WEAPON (TUGAS 1) ===")
+    val weapon = Weapon("Excalibur")
 
-    try {
-        account.withdraw(2000)
-    } catch (e: IllegalArgumentException) {
-        println("Error: ${e.message}")
-    }
+    println("Mencoba set damage -50:")
+    weapon.damage = -50
+    println("Damage sekarang: ${weapon.damage}")
+
+    println("\nMencoba set damage 9999:")
+    weapon.damage = 9999
+    println("Damage sekarang: ${weapon.damage}")
+
+    println("\nMencoba set damage 750:")
+    weapon.damage = 750
+    println("Damage sekarang: ${weapon.damage}")
+    println("Tier: ${weapon.tier}")
+
+    println("\nMencoba set damage 900:")
+    weapon.damage = 900
+    println("Damage sekarang: ${weapon.damage}")
+    println("Tier: ${weapon.tier}")
 }

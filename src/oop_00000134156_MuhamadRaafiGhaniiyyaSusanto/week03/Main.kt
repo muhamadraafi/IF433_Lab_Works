@@ -14,8 +14,16 @@ fun main() {
     account.deposit(500)
     account.withdraw(200)
 
-    // Baris di bawah ini akan ERROR (coba hapus komentar)
-    // account.balance = 5000  // ERROR: Cannot assign to 'balance'
+    // Test validasi
+    try {
+        account.deposit(-100)
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
+    }
 
-    account.withdraw(2000)  // Akan gagal (saldo tidak cukup)
+    try {
+        account.withdraw(2000)
+    } catch (e: IllegalArgumentException) {
+        println("Error: ${e.message}")
+    }
 }

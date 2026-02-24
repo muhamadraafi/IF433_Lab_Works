@@ -29,8 +29,29 @@ fun main() {
     println("Damage sekarang: ${weapon.damage}")
     println("Tier: ${weapon.tier}")
 
-    println("\nMencoba set damage 900:")
-    weapon.damage = 900
-    println("Damage sekarang: ${weapon.damage}")
-    println("Tier: ${weapon.tier}")
+    println("\n=== TEST PLAYER (TUGAS 2) ===")
+    val player = Player("Raafi")
+
+    println("XP awal: ${player.getXp()}")
+    println("Level awal: ${player.level}")
+
+    // Baris di bawah ini akan ERROR jika dijalankan (coba hapus komentar)
+    // println(player.xp)  // ERROR: Cannot access 'xp'
+
+    println("\nTambah XP 50:")
+    player.addXp(50)
+    println("Level sekarang: ${player.level}")
+
+    println("\nTambah XP 60:")
+    player.addXp(60)
+    println("Level sekarang: ${player.level}")
+
+    println("\nTambah XP -10 (harus gagal):")
+    player.addXp(-10)
+
+    println("\nTambah XP 100:")
+    player.addXp(100)
+    println("Level sekarang: ${player.level}")
+
+    println("\nXP akhir: ${player.getXp()}")
 }

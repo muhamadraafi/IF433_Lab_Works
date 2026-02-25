@@ -17,4 +17,20 @@ fun main() {
     tesla.openTrunk()       // Method dari Car
     tesla.honk()            // Method override dari Car
     tesla.accelerate()      // Method final override dari ElectricCar
+
+    println("\n--- Testing Employee Hierarchy (Tugas 2) ---")
+
+    // Membuat objek Manager
+    val manager = Manager(name = "Budi", baseSalary = 10000000)
+    println("Manager: ${manager.name}")
+    manager.work()
+    println("Bonus Manager: Rp ${manager.calculateBonus()}")
+
+    println()
+
+    // Membuat objek Developer
+    val developer = Developer(name = "Ani", baseSalary = 8000000, programmingLanguage = "Kotlin")
+    println("Developer: ${developer.name}")
+    developer.work()
+    println("Bonus Developer: Rp ${developer.calculateBonus()}")
 }

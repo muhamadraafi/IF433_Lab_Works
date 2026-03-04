@@ -78,6 +78,53 @@ fun main() {
         metode.processPayment(75000.0)
     }
 
-    // Catatan: Program akan berhenti di sini dulu
-    // Untuk CHECKPOINT 11 nanti akan ditambahkan Smart Casting Challenge
+    // === SMART CASTING CHALLENGE ===
+    println("\n--- SMART CASTING CHALLENGE: Top Up E-Wallet ---")
+
+    // Melakukan perulangan lagi untuk mendeteksi tiap metode dengan SMART CASTING
+    for (metode in metodePembayaran) {
+        when (metode) {
+            // SMART CASTING: Ketika terdeteksi sebagai EWallet
+            is EWallet -> {
+                println("\n✅ Mendeteksi E-Wallet: ${metode.accountName}")
+                println("   Saldo sebelum top up: Rp ${metode.balance}")
+
+                // Memanggil fungsi spesifik EWallet (topUp)
+                // Ini bisa dilakukan karena smart casting sudah mengubah tipe menjadi EWallet
+                metode.topUp(50000.0)
+
+                println("   Mencoba pembayaran Rp 75.000 lagi setelah top up:")
+                // Mencoba pembayaran lagi setelah top up
+                metode.processPayment(75000.0)
+            }
+
+            // SMART CASTING: Ketika terdeteksi sebagai CreditCard
+            is CreditCard -> {
+                println("\n💳 Mendeteksi Credit Card: ${metode.accountName}")
+                println("   Status kartu kredit - Limit: Rp ${metode.limit}, Terpakai: Rp ${metode.usedAmount}")
+                println("   (Tidak dilakukan top up karena bukan E-Wallet)")
+            }
+
+            // Jika ada metode pembayaran lain di masa depan, bisa ditambahkan di sini
+        }
+    }
+
+    // === RINGKASAN AKHIR ===
+    println("\n" + "=".repeat(40))
+    println("RINGKASAN TRANSAKSI")
+    println("=".repeat(40))
+
+    // Menampilkan status akhir EWallet
+    println("\nStatus Akhir E-Wallet:")
+    println("   Pemilik: ${eWallet.accountName}")
+    println("   Saldo akhir: Rp ${eWallet.balance}")
+
+    // Menampilkan status akhir CreditCard
+    println("\nStatus Akhir Credit Card:")
+    println("   Pemilik: ${creditCard.accountName}")
+    println("   Limit: Rp ${creditCard.limit}")
+    println("   Total terpakai: Rp ${creditCard.usedAmount}")
+    println("   Sisa limit: Rp ${creditCard.limit - creditCard.usedAmount}")
+
+    println("\n=== PROGRAM SELESAI ===")
 }

@@ -6,10 +6,7 @@ fun main(args: Array<String>) {
     val area = pi * radius * radius
 
     println("Luas lingkaran dengan radius $radius adalah $area")
-
-    if (area > 100) {
-        println("Lingkaran Besar")
-    } else {
-        println("Lingkaran Kecil")
-    }
+    println(checkSize(area))
 }
+
+fun checkSize(area: Double) = if (area > 100) "Lingkaran Besar" else "Lingkaran Kecil"

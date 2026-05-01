@@ -48,8 +48,25 @@ fun main() {
 
     val paymentMethods: List<PaymentMethod> = listOf(eWallet, creditCard)
 
-    println("=== Melakukan pembayaran Rp75.000 ===")
+    println("=== Percobaan pembayaran pertama Rp75.000 ===")
     for (method in paymentMethods) {
         method.processPayment(75000.0)
+    }
+
+    // Smart Casting Challenge: Top up EWallet jika saldo tidak cukup
+    println("\n=== Smart Casting: Deteksi EWallet dan Top Up ===")
+    for (method in paymentMethods) {
+        when (method) {
+            is EWallet -> {
+                println("Smart Casting terdeteksi: ${method.accountName} menggunakan EWallet!")
+                println("Menjalankan top up Rp50.000 untuk recovery...")
+                method.topUp(50000.0)
+                println("Mencoba pembayaran lagi Rp75.000...")
+                method.processPayment(75000.0)
+            }
+            else -> {
+                println("${method.accountName} menggunakan metode lain, tidak perlu top up.")
+            }
+        }
     }
 }

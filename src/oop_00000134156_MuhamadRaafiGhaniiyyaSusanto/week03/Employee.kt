@@ -25,4 +25,19 @@ class Employee(val name: String) {
     fun getPerformanceRating(): Int {
         return performanceRating
     }
+
+    // Custom Setter with Validation
+    var balance: Int = 0
+        set(value) {
+            if (value < 0) {
+                println("WARNING: Saldo tidak boleh negatif!")
+            } else {
+                field = value
+                println("Saldo $name berhasil diupdate menjadi Rp$field")
+            }
+        }
+
+    // Computed Property (Getter only)
+    val taxBalance: Int
+        get() = (balance * 0.1).toInt()
 }

@@ -39,4 +39,28 @@ fun main() {
     println("\n4. Mencoba set damage 900 (Legendary):")
     weapon.damage = 900
     println("Damage sekarang: ${weapon.damage}, Tier: ${weapon.tier}")
+
+    // ===== TASK 2: PLAYER LEVELING TESTING =====
+    println("\n========== TUGAS 2: PLAYER ==========")
+    val player = Player("HeroBima")
+    println("Player: ${player.username}")
+    println("Level awal: ${player.level}")
+
+    println("\n1. Mencoba akses player.xp (seharusnya ERROR jika di luar class):")
+    println("   (Kode tidak bisa mengakses xp karena private)")
+
+    println("\n2. Mencoba menambah XP 50 (masih Level 1):")
+    player.addXp(50)
+    println("Level sekarang: ${player.level}")
+
+    println("\n3. Mencoba menambah XP 60 (total 110, harus Level Up ke 2):")
+    player.addXp(60)
+    println("Level sekarang: ${player.level}")
+
+    println("\n4. Mencoba menambah XP -10 (harus ditolak):")
+    player.addXp(-10)
+
+    println("\n5. Mencoba menambah XP 100 (Level 3):")
+    player.addXp(100)
+    println("Level sekarang: ${player.level}")
 }

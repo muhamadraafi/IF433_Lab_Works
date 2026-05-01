@@ -39,4 +39,17 @@ fun main() {
 
     val luasLingkaran = math.hitungLuas(7.0)
     println("Luas Lingkaran (jari-jari=7): $luasLingkaran")
+
+    // ===== TASK 2: PAYMENT SYSTEM =====
+    println("\n========== TASK 2: PAYMENT SYSTEM ==========")
+
+    val eWallet = EWallet("Budi", 50000.0)
+    val creditCard = CreditCard("Andi", 100000.0)
+
+    val paymentMethods: List<PaymentMethod> = listOf(eWallet, creditCard)
+
+    println("=== Melakukan pembayaran Rp75.000 ===")
+    for (method in paymentMethods) {
+        method.processPayment(75000.0)
+    }
 }

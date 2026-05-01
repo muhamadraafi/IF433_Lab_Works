@@ -1,7 +1,8 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week05
 
 fun main() {
-    // Membuat polymorphic collection (List of Pegawai)
+    // ===== GUIDED LAB =====
+    println("========== GUIDED LAB ==========")
     val daftarPegawai: List<Pegawai> = listOf(
         Dosen("Prof. Ahmad", "12345"),
         Admin("Siti"),
@@ -9,16 +10,14 @@ fun main() {
         Admin("Joko")
     )
 
-    // Menampilkan semua pegawai dan melakukan smart casting
     for (pegawai in daftarPegawai) {
         println("Pegawai: ${pegawai.nama}")
         pegawai.bekerja()
 
-        // Smart Casting dengan is dan when
         when (pegawai) {
             is Dosen -> {
                 println("=> Terdeteksi sebagai Dosen (NIDN: ${pegawai.nidn})")
-                pegawai.mengajar() // Smart cast! Tidak perlu manual casting (as)
+                pegawai.mengajar()
             }
             is Admin -> {
                 println("=> Terdeteksi sebagai Admin")
@@ -27,4 +26,17 @@ fun main() {
         }
         println("--------------------------------")
     }
+
+    // ===== TASK 1: OVERLOADING =====
+    println("\n========== TASK 1: OVERLOADING ==========")
+    val math = MathHelper()
+
+    val luasPersegi = math.hitungLuas(5)
+    println("Luas Persegi (sisi=5): $luasPersegi")
+
+    val luasPersegiPanjang = math.hitungLuas(4, 7)
+    println("Luas Persegi Panjang (panjang=4, lebar=7): $luasPersegiPanjang")
+
+    val luasLingkaran = math.hitungLuas(7.0)
+    println("Luas Lingkaran (jari-jari=7): $luasLingkaran")
 }

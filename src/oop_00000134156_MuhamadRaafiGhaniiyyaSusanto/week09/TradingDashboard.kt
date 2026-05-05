@@ -1,6 +1,8 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week09
 
 fun main() {
+    println("=== CRYPTO TRADING DASHBOARD ===")
+
     val tradeHistory = listOf(
         TradeLog("BTCUSDT", "LONG", 10, 25.5, "CLOSED"),
         TradeLog("ETHUSDT", "SHORT", 5, -12.3, "CLOSED"),
@@ -15,10 +17,10 @@ fun main() {
     val winningTrades = closedTrades.filter { it.roe > 0 }
     val losingTrades = closedTrades.filter { it.roe < 0 }
 
-    println("=== CHECKPOINT 14: Extract Losing Trades ===")
+    val winRate = (winningTrades.size.toDouble() / closedTrades.size) * 100
+
     println("Closed trades: ${closedTrades.size}")
     println("Winning trades: ${winningTrades.size}")
     println("Losing trades: ${losingTrades.size}")
-    println("\nLosing trades details:")
-    losingTrades.forEach { println("  - ${it.pair} : ${it.roe}% (${it.position})") }
+    println("Win Rate: %.2f%%".format(winRate))
 }

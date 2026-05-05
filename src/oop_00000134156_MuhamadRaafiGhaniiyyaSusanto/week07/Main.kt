@@ -36,4 +36,13 @@ fun main() {
         ApiResponse.Loading -> "Tampilkan Spinner"
     }
     println(uiMessage)
+
+    // ========== TUGAS MANDIRI ==========
+    println("\n" + "=".repeat(50))
+    println("🎮 TUGAS MANDIRI - RPG GAME 🎮")
+    println("=".repeat(50))
+
+    println("\n--- GameManager Singleton Test ---")
+    GameManager.startGame()
+    GameManager.startGame()
 }

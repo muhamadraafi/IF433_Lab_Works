@@ -19,4 +19,9 @@ fun main() {
     val result2 = processData("Kotlin Generic")
     println("Hasil processData: $result1")
     println("Hasil processData: $result2")
+
+    println("\n=== TEST CONSTRAINTS ===")
+    val math = MathBox(10.5, 20)
+    println("Total: ${math.sum()}")
+    println("Terbesar: ${getMax(45, 90)}")
 }

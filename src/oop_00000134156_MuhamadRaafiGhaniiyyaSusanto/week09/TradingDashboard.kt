@@ -19,8 +19,18 @@ fun main() {
 
     val winRate = (winningTrades.size.toDouble() / closedTrades.size) * 100
 
+    val totalProfit = winningTrades.sumOf { it.roe }
+    val totalLoss = losingTrades.sumOf { it.roe }
+    val netProfit = totalProfit + totalLoss
+
+    val averageProfit = if (winningTrades.isNotEmpty()) totalProfit / winningTrades.size else 0.0
+
     println("Closed trades: ${closedTrades.size}")
     println("Winning trades: ${winningTrades.size}")
     println("Losing trades: ${losingTrades.size}")
     println("Win Rate: %.2f%%".format(winRate))
+    println("Total Profit: %.2f%%".format(totalProfit))
+    println("Total Loss: %.2f%%".format(totalLoss))
+    println("Net Profit: %.2f%%".format(netProfit))
+    println("Average Profit: %.2f%%".format(averageProfit))
 }

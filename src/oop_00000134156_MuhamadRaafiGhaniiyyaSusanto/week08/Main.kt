@@ -1,7 +1,6 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week08
 
 fun main() {
-    println("========== WEEK 08 - NULL SAFETY DEMO ==========")
     println("=== TEST SAFE CALLS & ELVIS ===")
     val emptyOrder = Order(null, null)
     val destination = emptyOrder.deliveryDetails?.address?.city?.name ?: "Kota Tidak Diketahui"
@@ -35,5 +34,12 @@ fun main() {
     val safeString = someObject as? String ?: "Unknown String"
     println("Hasil cast + fallback: $safeString")
 
-    println("\n✅ Safe casting test completed successfully!")
+    println("\n=== TEST THE RED BUTTON (!!) ===")
+    val toxicData: String? = null
+    try {
+        // DANGEROUS: Memaksa compiler percaya data ini tidak null
+        val length = toxicData!!.length
+    } catch (e: NullPointerException) {
+        println("CRASH (NPE)! Jangan gunakan !! secara sembarangan.")
+    }
 }

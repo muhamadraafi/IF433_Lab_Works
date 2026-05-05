@@ -52,4 +52,23 @@ fun main() {
     println("\n--- Weapon Forge Factory Test ---")
     val starterWeapon = Weapon.forgeStarterSword()
     println("Starter Weapon: ${starterWeapon.item.name}, Damage: ${starterWeapon.item.damage}, Durability: ${starterWeapon.durability}, Rarity: ${starterWeapon.item.rarity}")
+
+    println("\n--- Immutability Test with copy() ---")
+    val upgradedItem = starterWeapon.item.copy(name = "Pedang Kayu +1", damage = 25)
+    println("Original item: ${starterWeapon.item}")
+    println("Upgraded item (using copy): $upgradedItem")
+    println("Original item unchanged: ${starterWeapon.item} (Immutability preserved!)")
+
+    println("\n--- Battle Events Simulation ---")
+    println("1. Safe Zone:")
+    processEvent(BattleState.SafeZone)
+
+    println("\n2. Monster Encounter:")
+    processEvent(BattleState.MonsterEncounter("Goblin Nakal"))
+
+    println("\n3. Loot Dropped (upgraded weapon):")
+    processEvent(BattleState.LootDropped(upgradedItem))
+
+    println("\n4. Game Over:")
+    processEvent(BattleState.GameOver("Terkena jebakan racun"))
 }

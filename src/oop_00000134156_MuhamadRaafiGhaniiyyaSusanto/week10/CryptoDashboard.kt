@@ -5,10 +5,10 @@ fun main() {
 
     val coinRepo = WalletRepository<Coin>()
 
-    // Menambah minimal 3 koin
     coinRepo.add(Coin("BTC", 0.5))
     coinRepo.add(Coin("ETH", 4.2))
     coinRepo.add(Coin("USDT", 1000.0))
 
-    println("Coins added to repository!")
+    val response = ApiResponse("200 OK", coinRepo.getAll())
+    println("Response status: ${response.status}")
 }

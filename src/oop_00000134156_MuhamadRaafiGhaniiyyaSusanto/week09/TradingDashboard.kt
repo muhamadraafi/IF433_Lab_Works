@@ -36,6 +36,7 @@ fun main() {
 
     val worstPerformersString = worstPerformers.map { "${it.pair} : ${it.roe}%" }
 
+    println("\n=== METRICS ===")
     println("Closed trades: ${closedTrades.size}")
     println("Winning trades: ${winningTrades.size}")
     println("Losing trades: ${losingTrades.size}")
@@ -44,5 +45,7 @@ fun main() {
     println("Total Loss: %.2f%%".format(totalLoss))
     println("Net Profit: %.2f%%".format(netProfit))
     println("Average Profit: %.2f%%".format(averageProfit))
-    println("Unique pairs traded: $uniquePairs")
+
+    println("\n=== TOP 3 PERFORMERS ===")
+    topPerformersString.forEach { println("  🟢 $it") }
 }

@@ -13,5 +13,6 @@ fun main() {
         TradeLog("SOLUSDT", "LONG", 12, 30.1, "CLOSED")
     )
 
-    println("Total trades: ${tradeHistory.size}")
+    val closedTrades = tradeHistory.filter { it.status == "CLOSED" }
+    println("Closed trades: ${closedTrades.size}")
 }

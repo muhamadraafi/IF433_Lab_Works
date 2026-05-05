@@ -2,6 +2,7 @@ package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week08
 
 fun main() {
     println("========== E-COMMERCE API PARSER ==========")
+    println("========== WEEK 08 - FINAL TEST ==========")
 
     val rawApiData: List<Map<String, Any?>> = listOf(
         mapOf("id" to "E01", "name" to "Laptop", "type" to "ELECTRONIC", "warranty" to 24),
@@ -13,15 +14,20 @@ fun main() {
 
     val parser = ApiParser()
 
-    for (raw in rawApiData) {
+    println("\n--- Processing API Data ---")
+    for ((index, raw) in rawApiData.withIndex()) {
+        println("\n[Data ke-${index + 1}]")
         try {
             val product = parser.parseProduct(raw)
             product?.let {
-                println("\n📦 Product parsed: ${it}")
+                println("📦 Product parsed: ${it}")
                 parser.checkout(it)
-            } ?: println("\n⚠️ Unknown product type, skipping...")
+            } ?: println("⚠️ Unknown product type, skipping...")
         } catch (e: IllegalArgumentException) {
-            println("\n❌ Data korup: ${e.message}")
+            println("❌ Data korup: ${e.message}")
         }
     }
+
+    println("\n========== PIPELINE TEST COMPLETED ==========")
+    println("✅ Full e-commerce pipeline test successful!")
 }

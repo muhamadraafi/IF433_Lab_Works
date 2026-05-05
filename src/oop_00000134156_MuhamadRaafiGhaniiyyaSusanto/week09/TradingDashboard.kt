@@ -48,4 +48,10 @@ fun main() {
 
     println("\n=== TOP 3 PERFORMERS ===")
     topPerformersString.forEach { println("  🟢 $it") }
+
+    println("\n=== WORST 3 PERFORMERS ===")
+    worstPerformersString.forEach { println("  🔴 $it") }
+
+    println("\n=== UNIQUE PAIRS TRADED ===")
+    println("  📊 $uniquePairs")
 }

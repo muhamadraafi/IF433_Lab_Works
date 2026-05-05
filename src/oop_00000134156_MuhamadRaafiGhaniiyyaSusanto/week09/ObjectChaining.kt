@@ -11,4 +11,13 @@ fun main() {
         Student("Eve", 88, "Business")
     )
     println("All Students: $students")
+
+    println("\n=== CHAINING OPERATIONS ===")
+    val topStudents = students
+        .filter { it.grade >= 80 }
+        .sortedByDescending { it.grade }
+        .map { "${it.name} (${it.grade}) - ${it.major}" }
+
+    println("Top Students (Grade >= 80):")
+    topStudents.forEach { println("  - $it") }
 }

@@ -22,6 +22,7 @@ fun main() {
     val totalProfit = winningTrades.sumOf { it.roe }
     val totalLoss = losingTrades.sumOf { it.roe }
     val netProfit = totalProfit + totalLoss
+
     val averageProfit = if (winningTrades.isNotEmpty()) totalProfit / winningTrades.size else 0.0
 
     val uniquePairs = winningTrades.map { it.pair }.toSet().sorted()
@@ -54,4 +55,7 @@ fun main() {
 
     println("\n=== UNIQUE PAIRS TRADED ===")
     println("  📊 $uniquePairs")
+
+    println("\n========== PIPELINE TEST COMPLETED ==========")
+    println("✅ Full crypto trading data pipeline test successful!")
 }

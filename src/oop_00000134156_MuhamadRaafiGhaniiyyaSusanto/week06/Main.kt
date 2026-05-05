@@ -35,4 +35,8 @@ fun main() {
     hub.addDevice(lampRuangTamu)
     hub.addDevice(speakerDapur)
     hub.addDevice(cctvGarasi)
+
+    // Add testing calls
+    hub.activateSecurityMode()
+    hub.turnOffAllSwitches()
 }

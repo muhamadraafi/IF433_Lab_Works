@@ -22,8 +22,19 @@ fun main() {
     val totalProfit = winningTrades.sumOf { it.roe }
     val totalLoss = losingTrades.sumOf { it.roe }
     val netProfit = totalProfit + totalLoss
-
     val averageProfit = if (winningTrades.isNotEmpty()) totalProfit / winningTrades.size else 0.0
+
+    val uniquePairs = winningTrades.map { it.pair }.toSet().sorted()
+    val topPerformers = winningTrades
+        .sortedByDescending { it.roe }
+        .take(3)
+
+    val topPerformersString = topPerformers.map { "${it.pair} : ${it.roe}%" }
+    val worstPerformers = losingTrades
+        .sortedBy { it.roe }
+        .take(3)
+
+    val worstPerformersString = worstPerformers.map { "${it.pair} : ${it.roe}%" }
 
     println("Closed trades: ${closedTrades.size}")
     println("Winning trades: ${winningTrades.size}")
@@ -33,4 +44,5 @@ fun main() {
     println("Total Loss: %.2f%%".format(totalLoss))
     println("Net Profit: %.2f%%".format(netProfit))
     println("Average Profit: %.2f%%".format(averageProfit))
+    println("Unique pairs traded: $uniquePairs")
 }

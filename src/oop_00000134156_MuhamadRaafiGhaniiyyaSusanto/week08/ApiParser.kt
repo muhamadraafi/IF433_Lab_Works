@@ -2,7 +2,6 @@ package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week08
 
 class ApiParser {
     fun parseProduct(rawJson: Map<String, Any?>): Product? {
-        // Ekstrak id dan name. Gunakan requireNotNull dengan pesan error custom
         val id = requireNotNull(rawJson["id"]) { "API Invalid: Missing ID" } as? String
             ?: throw IllegalArgumentException("API Invalid: ID must be String")
 
@@ -22,5 +21,19 @@ class ApiParser {
             }
             else -> null
         }
+    }
+
+    fun checkout(product: Product) {
+        val transactionId = when (product) {
+            is Product.Electronic -> {
+                val result = JavaPaymentService.processPayment(product.id)
+                result!!
+            }
+            is Product.Clothing -> {
+                val result = JavaPaymentService.processPayment(product.id)
+                result!!
+            }
+        }
+        println("✅ Transaksi sukses! Transaction ID: $transactionId")
     }
 }

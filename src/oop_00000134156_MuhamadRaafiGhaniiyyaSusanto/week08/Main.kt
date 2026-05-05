@@ -1,6 +1,7 @@
 package oop_00000134156_MuhamadRaafiGhaniiyyaSusanto.week08
 
 fun main() {
+    println("========== WEEK 08 - NULL SAFETY DEMO ==========")
     println("=== TEST SAFE CALLS & ELVIS ===")
     val emptyOrder = Order(null, null)
     val destination = emptyOrder.deliveryDetails?.address?.city?.name ?: "Kota Tidak Diketahui"
@@ -30,8 +31,9 @@ fun main() {
         }
     }
 
-    val someObject: Any = 100 // Tipe aslinya Integer
-    // Coba cast ke String. Jika gagal (null), ganti dengan "Unknown String"
+    val someObject: Any = 100
     val safeString = someObject as? String ?: "Unknown String"
     println("Hasil cast + fallback: $safeString")
+
+    println("\n✅ Safe casting test completed successfully!")
 }

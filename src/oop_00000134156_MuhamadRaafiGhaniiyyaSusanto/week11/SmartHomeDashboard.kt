@@ -5,7 +5,7 @@ fun main() {
 
     val homeDevices = mutableListOf<SmartDevice>()
 
-    // Konfigurasi Pencahayaan
+    // 1. Konfigurasi Pencahayaan (apply & also)
     val livingRoomLamp = SmartDevice(
         name = "Philips WiZ Living Room",
         category = "Lighting",
@@ -13,45 +13,60 @@ fun main() {
         powerLoad = 12
     ).also {
         homeDevices.add(it)
+        println("✓ Added: ${it.name}")
     }
-    println("Configured: ${livingRoomLamp.name}")
 
-    // Konfigurasi Keamanan
+    // 2. Konfigurasi Keamanan (also)
     val camera = SmartDevice("Ezviz Outdoor", "Camera").apply {
         isOnline = true
         powerLoad = 5
     }.also {
         println("(LOG) Kamera terhubung")
         homeDevices.add(it)
+        println("✓ Added: ${it.name}")
     }
 
-    // Konfigurasi AC
+    // 3. Konfigurasi AC (run)
     val acUnit = run {
         SmartDevice("Daikin Inverter (Kabel 3x2.5)", "HVAC", false, 800)
     }.also {
         homeDevices.add(it)
+        println("✓ Added: ${it.name}")
     }
 
-    // Alat pakan peliharaan
+    // 4. Alat pakan peliharaan
     val petFeeder = SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10).also {
         homeDevices.add(it)
+        println("✓ Added: ${it.name}")
     }
 
-    // Pencarian dengan let
+    // 5. Pencarian Aman dengan let
+    println("\n=== DEVICE SEARCH ===")
     val searchResult = homeDevices.find { it.category == "Camera" }
     searchResult?.let { device ->
-        println("Device found: ${device.diagnose()}")
+        println("✅ Camera found!")
+        println(device.diagnose())
     }
 
-    // Format Summary dengan with
+    // 6. Menggunakan with untuk Format Summary
     println("\n=== DASHBOARD SUMMARY ===")
     with(homeDevices) {
         println("Total devices: ${this.size}")
+        println("Device categories: ${this.map { it.category }.distinct()}")
     }
 
-    // Kalkulasi Daya dengan run
+    // 7. Kalkulasi Daya dengan run
     val totalPower = homeDevices.run {
         sumOf { it.powerLoad }
     }
     println("Total power usage: $totalPower Watts")
+
+    // 8. Diagnostik semua perangkat
+    println("\n=== DEVICE DIAGNOSTICS ===")
+    homeDevices.forEach { device ->
+        println(device.diagnose())
+    }
+
+    println("\n========== PIPELINE TEST COMPLETED ==========")
+    println("✅ Full smart home configuration pipeline test successful!")
 }

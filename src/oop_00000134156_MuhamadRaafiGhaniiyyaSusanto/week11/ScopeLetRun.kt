@@ -4,10 +4,17 @@ fun main() {
     println("=== TEST LET FUNCTION ===")
     val name: String? = "Alexander"
 
-    // Mengeksekusi blok hanya jika objek tidak null
     val length = name?.let {
-        println("Nama terdeteksi: $it") // 'it' merujuk pada name
-        it.length // Mengembalikan nilai expression terakhir
+        println("Nama terdeteksi: $it")
+        it.length
     }
     println("Panjang nama: $length")
+
+    println("\n=== TEST RUN FUNCTION ===")
+    val result = "Kotlin".run {
+        println("Memproses kata: $this")
+        // Gunakan ?: Elvis operator untuk menangani jika length null
+        (length ?: 0) * 2
+    }
+    println("Hasil kalkulasi run: $result")
 }

@@ -16,7 +16,7 @@ fun main() {
     }
     println("Configured: ${livingRoomLamp.name}")
 
-    // Konfigurasi Keamanan (also)
+    // Konfigurasi Keamanan
     val camera = SmartDevice("Ezviz Outdoor", "Camera").apply {
         isOnline = true
         powerLoad = 5
@@ -24,4 +24,19 @@ fun main() {
         println("(LOG) Kamera terhubung")
         homeDevices.add(it)
     }
+
+    // Konfigurasi AC & Kabel (run)
+    val acUnit = run {
+        SmartDevice("Daikin Inverter (Kabel 3x2.5)", "HVAC", false, 800)
+    }.also {
+        homeDevices.add(it)
+    }
+
+    // Alat pakan peliharaan
+    val petFeeder = SmartDevice("Picolo's Auto Feeder", "Pet Care", true, 10).also {
+        homeDevices.add(it)
+    }
+
+    println("Configured AC: ${acUnit.name}")
+    println("Configured Pet Feeder: ${petFeeder.name}")
 }

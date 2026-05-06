@@ -37,10 +37,15 @@ fun main() {
         homeDevices.add(it)
     }
 
-    println("\n=== DEVICE SEARCH WITH LET ===")
-    // Pencarian Aman dengan let
+    // Pencarian dengan let
     val searchResult = homeDevices.find { it.category == "Camera" }
     searchResult?.let { device ->
         println("Device found: ${device.diagnose()}")
+    }
+
+    // Menggunakan with untuk Format Summary
+    println("\n=== DASHBOARD SUMMARY ===")
+    with(homeDevices) {
+        println("Total devices: ${this.size}")
     }
 }

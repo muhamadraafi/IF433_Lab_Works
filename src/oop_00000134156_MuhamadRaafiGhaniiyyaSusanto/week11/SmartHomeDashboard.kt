@@ -25,7 +25,7 @@ fun main() {
         homeDevices.add(it)
     }
 
-    // Konfigurasi AC & Kabel (run)
+    // Konfigurasi AC
     val acUnit = run {
         SmartDevice("Daikin Inverter (Kabel 3x2.5)", "HVAC", false, 800)
     }.also {
@@ -37,6 +37,10 @@ fun main() {
         homeDevices.add(it)
     }
 
-    println("Configured AC: ${acUnit.name}")
-    println("Configured Pet Feeder: ${petFeeder.name}")
+    println("\n=== DEVICE SEARCH WITH LET ===")
+    // Pencarian Aman dengan let
+    val searchResult = homeDevices.find { it.category == "Camera" }
+    searchResult?.let { device ->
+        println("Device found: ${device.diagnose()}")
+    }
 }

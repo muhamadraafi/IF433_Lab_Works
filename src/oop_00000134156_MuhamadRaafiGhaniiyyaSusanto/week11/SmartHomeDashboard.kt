@@ -43,9 +43,15 @@ fun main() {
         println("Device found: ${device.diagnose()}")
     }
 
-    // Menggunakan with untuk Format Summary
+    // Format Summary dengan with
     println("\n=== DASHBOARD SUMMARY ===")
     with(homeDevices) {
         println("Total devices: ${this.size}")
     }
+
+    // Kalkulasi Daya dengan run
+    val totalPower = homeDevices.run {
+        sumOf { it.powerLoad }
+    }
+    println("Total power usage: $totalPower Watts")
 }
